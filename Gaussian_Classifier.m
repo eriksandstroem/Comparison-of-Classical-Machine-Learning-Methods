@@ -16,7 +16,7 @@
 %
 % Outputs:
 %    
-%    classifier - vector containing results of NN classification
+%    classifier - vector containing results of Gaussian classification
 %    covMtx - 10 covariance matrices, one for each class
 %    totalError - error rate over all classes
 %    errorPerClass - error rate per class
