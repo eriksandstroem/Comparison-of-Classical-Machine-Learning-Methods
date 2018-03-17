@@ -97,14 +97,14 @@ end
 totalError = sum((labelTest-classifier ~= 0))/500;
 
 %% Determine number of digits within each class in the test set and number of errors per class
-digitsPerClass = zeros(1,10);
+digitsPerClassTest = zeros(1,10);
 nbrOfErrorsPerClass = zeros(1,10);
 errorIndex = find(labelTest-classifier ~= 0); %Indices in labelTest that are classified falsely
 errorPerClass = zeros(1,10);
 for i = 1:10
-    digitsPerClass(i) = sum((labelTest == i-1));
+    digitsPerClassTest(i) = sum((labelTest == i-1));
     nbrOfErrorsPerClass(i) = sum(classifier(labelTest == i-1) ~= i-1);
-    errorPerClass(i) = nbrOfErrorsPerClass(i)/digitsPerClass(i);
+    errorPerClass(i) = nbrOfErrorsPerClass(i)/digitsPerClassTest(i);
 end
 
 %Plot conditional probability error rate per class
