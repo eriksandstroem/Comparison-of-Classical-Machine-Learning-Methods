@@ -50,7 +50,7 @@ end
 for i = 1:10
 subplot(2,5,i);
 imshow(SampleMean(:,:,i), []); 
-title(['Class ' num2str(i-1) ' mean']);
+title(['Class ' num2str(i-1)]);
 end
 
 % Plot covariance matrix for each class
@@ -58,19 +58,19 @@ figure
 for i = 1:4
 subplot(2,2,i);
 imshow(CovMtx(:,:,i), []); 
-title(['Covariance matric of class ' num2str(i-1)]); 
+title(['Class ' num2str(i-1)]); 
 end
 figure
 for i = 5:8
 subplot(2,2,i-4);
 imshow(CovMtx(:,:,i), []); 
-title(['Covariance matric of class ' num2str(i-1)]); 
+title(['Class ' num2str(i-1)]); 
 end
 figure
 for i = 9:10
 subplot(1,2,i-8);
 imshow(CovMtx(:,:,i), []); 
-title(['Covariance matric of class ' num2str(i-1)]); 
+title(['Class ' num2str(i-1)]); 
 end
 
 %% Gaussian Classifier
@@ -110,7 +110,7 @@ end
 %Plot conditional probability error rate per class
 figure
 bar(0:9,errorPerClass);
-title('Plot of the conditional probability error rates as a function of the classes');
+title('Gaussian Classifier');
 xlabel('Class number');
 ylabel('P(Error|Class = i)');
 
