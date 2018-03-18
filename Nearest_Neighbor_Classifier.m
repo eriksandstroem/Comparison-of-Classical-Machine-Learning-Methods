@@ -2,7 +2,7 @@
 %from a subset containing 5000 training images and 500 test images of the
 %MNIST dataset.
 %
-% Need to be loaded
+% Need to be loaded:
 %
 %    imageTest - Download here: http://www.svcl.ucsd.edu/courses/ece175/
 %    imageTrain - Download here: http://www.svcl.ucsd.edu/courses/ece175/
@@ -68,9 +68,10 @@ end
 %Plot conditional probability error rate per class
 figure
 bar(0:9,errorPerClass);
-title('Plot of the conditional probability error rates as a function of the classes');
+title('Nearest Neighbor');
 xlabel('Class number');
 ylabel('P(Error|Class = i)');
+ylim([0 0.35])
 
 %Plot five examples of misclassified digits
 for i = 1:5
