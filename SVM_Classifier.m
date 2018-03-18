@@ -164,6 +164,28 @@ TrainSet = reshape(imageTrain,[784, 5000])'/255;
 model = svmtrain(labelTrain,TrainSet, svmopts);
 TestSet = reshape(imageTest,[784, 500])'/255;
 [tout, tAcc, text]=svmpredict(labelTest, TestSet, model);
+
+%% Determine total error rate over all classes
+totalError = sum((labelTest-tout ~= 0))/500;
+
+%% Determine number of digits within each class in the test set and number of errors per class
+digitsPerClassTest = zeros(1,10);
+nbrOfErrorsPerClass = zeros(1,10);
+errorIndex = find(labelTest-tout ~= 0); %Indices in labelTest that are classified falsely
+errorPerClass = zeros(1,10);
+for i = 1:10
+    digitsPerClassTest(i) = sum((labelTest == i-1));
+    nbrOfErrorsPerClass(i) = sum(tout(labelTest == i-1) ~= i-1);
+    errorPerClass(i) = nbrOfErrorsPerClass(i)/digitsPerClassTest(i);
+end
+
+%Plot conditional probability error rate per class
+figure
+bar(0:9,errorPerClass);
+title('SVM');
+xlabel('Class number');
+ylabel('P(Error|Class = i)');
+ylim([0 0.35])
 %------------- END OF CODE --------------
 
 
